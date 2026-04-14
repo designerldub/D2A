@@ -1,0 +1,261 @@
+.step {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Warm thank-you ──────────────────────────────── */
+
+.thankYou {
+  position: relative;
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 60%, #fecaca 100%);
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.75rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 12px rgba(251, 146, 60, 0.08);
+  overflow: hidden;
+}
+
+.heartBadge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.85rem;
+  color: #db2777;
+  box-shadow: 0 2px 8px rgba(219, 39, 119, 0.18);
+  animation: heartPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+
+.thankTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #7c2d12;
+  letter-spacing: -0.01em;
+}
+
+.thankBody {
+  margin: 0 auto;
+  max-width: 480px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #7c2d12;
+  opacity: 0.85;
+}
+
+/* ── Summary row ─────────────────────────────────── */
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  color: #374151;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.summary svg {
+  flex-shrink: 0;
+  color: #6b7280;
+}
+
+.summary p {
+  margin: 0;
+  text-align: left;
+}
+
+/* ── Section wrapper ─────────────────────────────── */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.005em;
+}
+
+.sectionHint {
+  margin: 0 0 0.75rem;
+  font-size: 0.825rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* ── Consent list ────────────────────────────────── */
+
+.consentList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.consentRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.consentRow:hover {
+  border-color: #9ca3af;
+  background: #fafafa;
+}
+
+.consentRowChecked {
+  border-color: #111827;
+  background: #f9fafb;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.06);
+}
+
+.consentRowChecked:hover {
+  border-color: #111827;
+  background: #f9fafb;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.checkbox {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1.5px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-top: 0.1rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.consentRow:hover .checkbox {
+  border-color: #9ca3af;
+}
+
+.checkboxChecked {
+  background: #111827;
+  border-color: #111827;
+}
+
+.consentRow:hover .checkboxChecked {
+  background: #1f2937;
+  border-color: #1f2937;
+}
+
+.consentText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.consentTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.consentDesc {
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* ── Signature ───────────────────────────────────── */
+
+.signatureWrap {
+  position: relative;
+  padding: 0.5rem 0.2rem 0.15rem;
+  margin-bottom: 0.6rem;
+}
+
+.signatureInput {
+  display: block;
+  width: 100%;
+  padding: 0.4rem 0 0.35rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Snell Roundhand', 'Apple Chancery', 'Brush Script MT', cursive;
+  font-style: italic;
+  font-size: 1.75rem;
+  color: #111827;
+  letter-spacing: 0.01em;
+  box-sizing: border-box;
+}
+
+.signatureInput::placeholder {
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+.signatureLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #9ca3af;
+  transition: background 0.15s;
+}
+
+.signatureInput:focus ~ .signatureLine {
+  background: #111827;
+}
+
+.signatureNote {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .thankYou { padding: 1.5rem 1rem 1.3rem; }
+  .thankTitle { font-size: 1.2rem; }
+  .heartBadge { width: 48px; height: 48px; margin-bottom: 0.65rem; }
+  .consentRow { padding: 0.85rem 0.9rem; }
+  .signatureInput { font-size: 1.5rem; }
+}
