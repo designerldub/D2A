@@ -1,0 +1,112 @@
+/* ── Composed from shared ────────────────────────── */
+
+.card         { composes: card         from '../adminForm.module.css'; }
+.titleRow     { composes: titleRow     from '../adminForm.module.css'; }
+.backBtn      { composes: backBtn      from '../adminForm.module.css'; }
+.divider      { composes: divider      from '../adminForm.module.css'; }
+.section      { composes: section      from '../adminForm.module.css'; }
+.sectionTitle { composes: sectionTitle from '../adminForm.module.css'; }
+.twoCol       { composes: twoCol       from '../adminForm.module.css'; }
+.field        { composes: field        from '../adminForm.module.css'; }
+.label        { composes: label        from '../adminForm.module.css'; }
+.input        { composes: input        from '../adminForm.module.css'; }
+.select       { composes: select       from '../adminForm.module.css'; }
+.actions      { composes: actions      from '../adminForm.module.css'; }
+.actionsLeft  { composes: actionsLeft  from '../adminForm.module.css'; }
+.primaryBtn        { composes: primaryBtn        from '../adminForm.module.css'; }
+.cancelBtn         { composes: cancelBtn         from '../adminForm.module.css'; }
+.deleteBtn         { composes: deleteBtn         from '../adminForm.module.css'; }
+.deleteConfirmBtn  { composes: deleteConfirmBtn  from '../adminForm.module.css'; }
+.toast        { composes: toast        from '../adminForm.module.css'; }
+.toastIcon    { composes: toastIcon    from '../adminForm.module.css'; }
+.toastMessage { composes: toastMessage from '../adminForm.module.css'; }
+.toastClose   { composes: toastClose   from '../adminForm.module.css'; }
+
+/* ── OrgUserForm specific ────────────────────────── */
+
+/* Title has tighter bottom margin to make room for subtitle */
+.title {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0 0 1.25rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* ── Toggle row ──────────────────────────────────── */
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.toggleInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.toggleTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.toggleDesc {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* ── Toggle control ──────────────────────────────── */
+
+.toggleLabel {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.toggleInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggleSlider {
+  position: absolute;
+  inset: 0;
+  background: #d1d5db;
+  border-radius: 28px;
+  transition: background 0.2s;
+}
+
+.toggleSlider::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  top: 3px;
+  background: #374151;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggleInput:checked + .toggleSlider { background: #374151; }
+
+.toggleInput:checked + .toggleSlider::before {
+  background: #ffffff;
+  transform: translateX(22px);
+}

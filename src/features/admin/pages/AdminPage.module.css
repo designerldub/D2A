@@ -1,0 +1,224 @@
+.page {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.topRow {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #374151;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.825rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.addBtn:hover {
+  background: #1f2937;
+}
+
+.addBtn span {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.productList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.productRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 0.9rem;
+}
+
+.productRow:last-child {
+  border-bottom: none;
+}
+
+.productName {
+  color: #111827;
+}
+
+.statusActive {
+  color: #16a34a;
+  font-size: 0.875rem;
+}
+
+.tableWrapper {
+  overflow-y: auto;
+  max-height: 240px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.thEdit,
+.th {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  white-space: nowrap;
+}
+
+.thEdit {
+  width: 48px;
+  padding-right: 0;
+}
+
+.thSortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.thSortable:hover {
+  color: #374151;
+  background: #f9fafb;
+}
+
+.thActive {
+  color: #111827;
+}
+
+.tr {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tr:last-child {
+  border-bottom: none;
+}
+
+.tr:hover {
+  background: #f9fafb;
+}
+
+.tdEdit {
+  width: 48px;
+  padding: 0.7rem 0.5rem 0.7rem 1rem;
+  vertical-align: middle;
+}
+
+.td {
+  padding: 0.7rem 1rem;
+  color: #111827;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.serviceCell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  vertical-align: middle;
+}
+
+.serviceChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #f3f4f6;
+  color: #374151;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.editBtn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.editBtn:hover {
+  color: #111827;
+}
+
+/* ── Clickable org name ──────────────────────────── */
+
+.orgNameBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #111827;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: transparent;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.orgNameBtn:hover {
+  color: #374151;
+  text-decoration-color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+  .topRow {
+    grid-template-columns: 1fr;
+  }
+}

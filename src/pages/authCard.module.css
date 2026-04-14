@@ -1,0 +1,267 @@
+/* Shared styles for the auth card interior (Login, Register, ForgotPassword) */
+
+.inner {
+  padding: 20px 43px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Title ───────────────────────────────────────── */
+.title {
+  font-size: 36px;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  color: #000;
+  margin: 0 0 20px;
+  line-height: normal;
+}
+
+/* ── Tab Toggle (Login / Register) ──────────────── */
+.tabRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabToggle {
+  display: flex;
+  background: #dcdcdc;
+  border-radius: 33px;
+  padding: 5px;
+  width: 329px;
+  height: 59px;
+  gap: 0;
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 28px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  color: #000;
+  font-weight: 400;
+  transition: background 0.18s, color 0.18s;
+  line-height: 1;
+}
+
+.tabActive {
+  background: #5b5b5b;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ── Subtitle ────────────────────────────────────── */
+.subtitle {
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  color: #5b5b5b;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+/* ── Form Fields ─────────────────────────────────── */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #000;
+  line-height: normal;
+}
+
+.fieldInput {
+  height: 54px;
+  border: 1px solid #5b5b5b;
+  border-radius: 40px;
+  padding: 0 30px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #000;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.fieldInput::placeholder {
+  color: #acacac;
+}
+
+.fieldInput:focus {
+  border-color: #000;
+}
+
+/* Password field with eye toggle */
+.passwordRow {
+  position: relative;
+}
+
+.passwordRow .fieldInput {
+  padding-right: 52px;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #5b5b5b;
+  display: flex;
+  align-items: center;
+}
+
+.eyeBtn:hover {
+  color: #000;
+}
+
+/* ── Remember / Forgot row ───────────────────────── */
+.rememberRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #000;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkbox:checked {
+  background: #5b5b5b;
+  border-color: #5b5b5b;
+}
+
+.forgotLink {
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #000;
+  text-decoration: none;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+/* ── Buttons ─────────────────────────────────────── */
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 49px;
+  background: #5b5b5b;
+  color: #fff;
+  border: none;
+  border-radius: 36px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s;
+}
+
+.submitBtn:hover {
+  background: #444;
+}
+
+.btnRow {
+  display: flex;
+  gap: 12px;
+}
+
+.btnRow .cancelBtn,
+.btnRow .submitBtn {
+  flex: 1;
+}
+
+.cancelBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 49px;
+  background: transparent;
+  color: #474747;
+  border: 1px solid #000;
+  border-radius: 36px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cancelBtn:hover {
+  background: #f5f5f5;
+}
+
+/* ── Password hint ───────────────────────────────── */
+.passwordHint {
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #000;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+/* ── Dev credentials note ────────────────────────── */
+.devNote {
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: #f8f8f8;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  color: #888;
+  line-height: 1.6;
+}
+
+.devNote strong {
+  color: #555;
+  display: block;
+  margin-bottom: 4px;
+}

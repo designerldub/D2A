@@ -1,0 +1,243 @@
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Header ──────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 1rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+  font-family: inherit;
+}
+
+.backBtn:hover {
+  color: #111827;
+  background: #f3f4f6;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.orgName {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.county {
+  font-size: 0.875rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #374151;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.825rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.addBtn:hover { background: #1f2937; }
+.addBtn span { font-size: 1.1rem; line-height: 1; }
+
+.divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 0;
+}
+
+/* ── Empty state ─────────────────────────────────── */
+
+.empty {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* ── Table ───────────────────────────────────────── */
+
+.tableWrapper {
+  overflow-y: auto;
+  max-height: 480px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.thEdit,
+.th {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  white-space: nowrap;
+}
+
+.thEdit {
+  width: 48px;
+  padding-right: 0;
+}
+
+.tr { border-bottom: 1px solid #f3f4f6; }
+.tr:last-child { border-bottom: none; }
+.tr:hover { background: #f9fafb; }
+
+.tdEdit {
+  width: 48px;
+  padding: 0.7rem 0.5rem 0.7rem 1rem;
+  vertical-align: middle;
+}
+
+.td {
+  padding: 0.7rem 1rem;
+  color: #111827;
+  vertical-align: middle;
+}
+
+.editBtn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.editBtn:hover { color: #111827; }
+
+/* ── User name cell ──────────────────────────────── */
+
+.userName {
+  font-weight: 500;
+  color: #111827;
+}
+
+.userEmail {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-top: 0.1rem;
+}
+
+/* ── Access chips ────────────────────────────────── */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.none {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+/* ── Permissions badge ───────────────────────────── */
+
+.roleAdmin {
+  display: inline-block;
+  background: #374151;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.roleViewer {
+  display: inline-block;
+  background: #f3f4f6;
+  color: #6b7280;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* ── Research participant ─────────────────────────── */
+
+.participantYes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 50%;
+}
+
+.participantNo {
+  color: #d1d5db;
+}
