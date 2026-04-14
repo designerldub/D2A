@@ -1,0 +1,157 @@
+.step {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Intro + hints ───────────────────────────────── */
+
+.intro {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.55;
+  text-align: center;
+  max-width: 620px;
+  align-self: center;
+}
+
+.empty {
+  margin: 0;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-style: italic;
+  border: 1px dashed #e5e7eb;
+  border-radius: 12px;
+}
+
+.countHint {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ── Grid ────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* ── Review card (extends landing card) ──────────── */
+
+.reviewCard {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    opacity 0.2s,
+    filter 0.2s,
+    transform 0.05s;
+}
+
+.reviewCard:focus-visible {
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.25);
+}
+
+.reviewCard:active {
+  transform: translateY(1px);
+}
+
+/* Selected: normal appearance + subtle ring of confidence */
+.selected {
+  border-color: #111827;
+  box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.08), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.selected:hover {
+  border-color: #111827;
+  box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.12), 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Deselected: dimmed but still legible */
+.deselected {
+  opacity: 0.5;
+  filter: saturate(0.4);
+}
+
+.deselected:hover {
+  opacity: 0.75;
+  filter: saturate(0.6);
+}
+
+/* ── Selection badge (replaces share button slot) ── */
+
+.selectBadge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #9ca3af;
+  border: 1.5px solid #d1d5db;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.reviewCard:hover .selectBadge {
+  border-color: #6b7280;
+  color: #6b7280;
+}
+
+.selectBadgeActive {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+  transform: scale(1);
+}
+
+.reviewCard:hover .selectBadgeActive {
+  background: #1f2937;
+  color: #ffffff;
+  border-color: #1f2937;
+}
+
+/* ── Footer status label (replaces "View Story" button) ── */
+
+.statusLabel {
+  font-size: 0.725rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.statusIncluded {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.statusExcluded {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}

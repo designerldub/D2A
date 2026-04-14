@@ -11,6 +11,7 @@ import { VisualizationPage } from '../features/care-journey/pages/VisualizationP
 import { MapPage } from '../features/map/pages/MapPage'
 import { UserStoriesPage } from '../features/user-stories/pages/UserStoriesPage'
 import { StoryPage } from '../features/user-stories/pages/StoryPage'
+import { CreateStoryPage } from '../features/user-stories/pages/CreateStoryPage'
 import { AdminPage } from '../features/admin/pages/AdminPage'
 
 export const router = createBrowserRouter([
@@ -51,6 +52,7 @@ export const router = createBrowserRouter([
         element: <ProtectedRoute product="user-stories" />,
         children: [
           { path: 'user-stories', element: <UserStoriesPage /> },
+          { path: 'user-stories/create', element: <CreateStoryPage /> },
           { path: 'user-stories/:id', element: <StoryPage /> },
         ],
       },
