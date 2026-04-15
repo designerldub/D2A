@@ -11,11 +11,11 @@
 .title {
   font-size: 36px;
   font-weight: 400;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   text-align: center;
-  color: #000;
+  color: var(--brand-green);
   margin: 0 0 20px;
-  line-height: normal;
+  line-height: 1.1;
 }
 
 /* ── Tab Toggle (Login / Register) ──────────────── */
@@ -41,7 +41,7 @@
   background: transparent;
   border-radius: 28px;
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   cursor: pointer;
   color: #000;
   font-weight: 400;
@@ -50,7 +50,7 @@
 }
 
 .tabActive {
-  background: #5b5b5b;
+  background: var(--brand-green);
   color: #fff;
   font-weight: 500;
 }
@@ -58,7 +58,7 @@
 /* ── Subtitle ────────────────────────────────────── */
 .subtitle {
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   color: #5b5b5b;
   line-height: 1.5;
   margin: 0 0 20px;
@@ -80,7 +80,7 @@
 
 .fieldLabel {
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   font-weight: 400;
   color: #000;
   line-height: normal;
@@ -92,7 +92,7 @@
   border-radius: 40px;
   padding: 0 30px;
   font-size: 15px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   font-weight: 300;
   color: #000;
   background: #fff;
@@ -150,7 +150,7 @@
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   font-weight: 300;
   color: #000;
   cursor: pointer;
@@ -175,7 +175,7 @@
 
 .forgotLink {
   font-size: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   font-weight: 300;
   color: #000;
   text-decoration: none;
@@ -191,21 +191,24 @@
   align-items: center;
   justify-content: center;
   height: 49px;
-  background: #5b5b5b;
-  color: #fff;
-  border: none;
+  background: #ffffff;
+  color: var(--brand-blue-dark);
+  border: 2px solid var(--brand-blue);
   border-radius: 36px;
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-weight: 600;
   cursor: pointer;
   width: 100%;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
 }
 
 .submitBtn:hover {
-  background: #444;
+  background: var(--brand-blue-tint);
+  border-color: var(--brand-blue-hover);
 }
+
+.submitBtn:focus-visible { outline: 2px solid var(--brand-blue-dark); outline-offset: 2px; }
 
 .btnRow {
   display: flex;
@@ -227,7 +230,7 @@
   border: 1px solid #000;
   border-radius: 36px;
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   font-weight: 400;
   cursor: pointer;
   transition: background 0.15s;
@@ -240,7 +243,7 @@
 /* ── Password hint ───────────────────────────────── */
 .passwordHint {
   font-size: 11px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   font-weight: 300;
   color: #000;
   line-height: 1.4;
@@ -255,7 +258,7 @@
   border: 1px dashed #ccc;
   border-radius: 8px;
   font-size: 11px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--sans);
   color: #888;
   line-height: 1.6;
 }

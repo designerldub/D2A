@@ -43,17 +43,20 @@
 
 .title {
   margin: 0;
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #111827;
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: var(--brand-green);
   letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-align: left;
 }
 
 .subtitle {
   margin: 0;
   font-size: 0.9rem;
   color: #6b7280;
-  max-width: 620px;
+  line-height: 1.2;
+  text-align: left;
 }
 
 /* ── Progress indicator ──────────────────────────── */
@@ -108,16 +111,16 @@
 }
 
 .progressNode.active {
-  background: #111827;
-  color: #ffffff;
-  border-color: #111827;
-  box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.1);
+  background: #ffffff;
+  color: var(--brand-blue-dark);
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 4px var(--brand-blue-tint);
 }
 
 .progressNode.done {
-  background: #10b981;
+  background: var(--brand-blue);
   color: #ffffff;
-  border-color: #10b981;
+  border-color: var(--brand-blue);
 }
 
 .progressLine {
@@ -132,7 +135,7 @@
 }
 
 .progressLine.lineDone {
-  background: #10b981;
+  background: var(--brand-blue);
 }
 
 .progressLabel {
@@ -145,7 +148,7 @@
 }
 
 .labelActive {
-  color: #111827;
+  color: var(--brand-green);
   font-weight: 600;
 }
 
@@ -182,8 +185,9 @@
 .stepTitle {
   margin: 0;
   font-size: 1.35rem;
-  font-weight: 700;
-  color: #111827;
+  font-weight: 600;
+  color: var(--brand-green);
+  text-align: left;
 }
 
 .stepBody {
@@ -244,30 +248,30 @@
 }
 
 .primaryBtn {
-  background: #111827;
-  color: #ffffff;
-  border: none;
+  background: #ffffff;
+  color: var(--brand-blue-dark);
+  border: 2px solid var(--brand-blue);
   border-radius: 8px;
-  padding: 0.6rem 1.5rem;
+  padding: 0.55rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.15s, transform 0.05s;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: background 0.15s, border-color 0.15s, transform 0.05s;
 }
 
-.primaryBtn:hover { background: #1f2937; }
+.primaryBtn:hover { background: var(--brand-blue-tint); border-color: var(--brand-blue-hover); }
+.primaryBtn:focus-visible { outline: 2px solid var(--brand-blue-dark); outline-offset: 2px; }
 .primaryBtn:active { transform: translateY(1px); }
 
 .primaryBtn:disabled {
-  background: #d1d5db;
+  background: #ffffff;
   color: #9ca3af;
+  border-color: #e5e7eb;
   cursor: not-allowed;
-  box-shadow: none;
 }
 
-.primaryBtn:disabled:hover { background: #d1d5db; }
+.primaryBtn:disabled:hover { background: #ffffff; border-color: #e5e7eb; }
 .primaryBtn:disabled:active { transform: none; }
 
 /* ── Responsive ──────────────────────────────────── */

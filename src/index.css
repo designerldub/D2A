@@ -1,4 +1,12 @@
 :root {
+  /* ── Brand palette ──────────────────────────── */
+  --brand-blue: #77AFD8;          /* primary blue */
+  --brand-blue-dark: #1F5C8E;     /* WCAG AAA on white (~7:1) — use for text/icons */
+  --brand-blue-hover: #5e9bc8;    /* darker border on hover */
+  --brand-blue-tint: #f0f7fc;     /* subtle hover background */
+  --brand-green: #274844;         /* primary green */
+  --brand-tan: #DEDCCA;            /* warm neutral */
+
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -11,8 +19,8 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: 'Work Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Work Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);

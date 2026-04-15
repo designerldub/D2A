@@ -62,7 +62,7 @@
   padding: 0.55rem 0.75rem;
   border-radius: 6px;
   text-decoration: none;
-  color: #4b5563;
+  color: var(--brand-green);
   font-size: 0.875rem;
   transition: background 0.15s, color 0.15s;
   white-space: nowrap;
@@ -71,12 +71,12 @@
 
 .navLink:hover {
   background: #f3f4f6;
-  color: #111827;
+  color: var(--brand-green);
 }
 
 .navLink.active {
   background: #f0f1f3;
-  color: #111827;
+  color: var(--brand-green);
   font-weight: 600;
 }
 
@@ -84,12 +84,15 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  color: #6b7280;
+  color: var(--brand-green);
 }
 
-.navLink.active .navIcon,
+.navLink.active .navIcon {
+  color: var(--brand-blue-dark);
+}
+
 .navLink:hover .navIcon {
-  color: #374151;
+  color: var(--brand-green);
 }
 
 .navLabel {
@@ -124,7 +127,7 @@
   width: 100%;
   background: none;
   border: none;
-  color: #4b5563;
+  color: var(--brand-green);
   padding: 0.55rem 0.75rem;
   border-radius: 6px;
   font-size: 0.875rem;
@@ -133,19 +136,20 @@
   transition: background 0.15s, color 0.15s;
   white-space: nowrap;
   overflow: hidden;
+  font-family: inherit;
 }
 
 .logoutBtn:hover {
   background: #f3f4f6;
-  color: #111827;
+  color: var(--brand-green);
 }
 
 .logoutBtn .navIcon {
-  color: #6b7280;
+  color: var(--brand-green);
 }
 
 .logoutBtn:hover .navIcon {
-  color: #374151;
+  color: var(--brand-green);
 }
 
 /* ── Main content ────────────────────────────────── */
