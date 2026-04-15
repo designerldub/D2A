@@ -81,7 +81,10 @@ export function Step4Review({
                 </span>
               </div>
 
-              <h2 className={landingStyles.cardTitle}>{preview.title}</h2>
+              <div className={landingStyles.cardHead}>
+                <h2 className={landingStyles.cardTitle}>{preview.title}</h2>
+                <span className={landingStyles.cardOrg}>{preview.org}</span>
+              </div>
               <p className={landingStyles.cardSnippet}>{preview.snippet}</p>
 
               {tags.length > 0 && (
@@ -93,9 +96,8 @@ export function Step4Review({
               )}
 
               <div className={landingStyles.cardFooter}>
-                <span className={landingStyles.cardOrg}>{preview.org}</span>
                 <span className={`${stepStyles.statusLabel} ${isSelected ? stepStyles.statusIncluded : stepStyles.statusExcluded}`}>
-                  {isSelected ? 'Will publish' : 'Excluded'}
+                  {isSelected ? 'Included' : 'Excluded'}
                 </span>
               </div>
             </div>

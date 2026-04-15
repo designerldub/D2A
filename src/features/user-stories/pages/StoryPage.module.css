@@ -112,13 +112,7 @@
 .contactBtn:focus-visible { outline: 2px solid var(--brand-blue-dark); outline-offset: 2px; }
 
 .title {
-  margin: 0;
-  font-size: 1.875rem;
-  font-weight: 400;
-  color: var(--brand-green);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  text-align: left;
+  composes: title from '../../_shared/pageHeader.module.css';
 }
 
 .headerFooter {

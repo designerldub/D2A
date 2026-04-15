@@ -27,7 +27,7 @@ npm run lint      # ESLint
 src/
 ├── App.tsx
 ├── main.tsx
-├── index.css                          # Global styles + CSS variables
+├── index.css                          # Global styles + CSS variables (brand tokens)
 ├── assets/                            # logo.png, logo-icon.png, auth-bg.jpg, hero.png
 ├── contexts/
 │   └── AuthContext.tsx                # Mock auth state, user model, product + admin access
@@ -38,6 +38,8 @@ src/
 │   ├── RegisterPage.tsx
 │   ├── ForgotPasswordPage.tsx
 │   ├── AuthShell.tsx
+│   ├── authCard.module.css            # Shared auth-card styles (separate design language)
+│   ├── StatusPage.module.css          # Shared 403/404 page styles
 │   ├── UnauthorizedPage.tsx           # 403
 │   └── NotFoundPage.tsx               # 404
 ├── router/
@@ -45,10 +47,23 @@ src/
 │   └── ProtectedRoute.tsx             # Guards by product access or adminOnly
 └── features/
     ├── _shared/
-    │   └── PlaceholderPage.module.css
-    ├── care-journey/pages/VisualizationPage.tsx   # STUB
-    ├── map/pages/MapPage.tsx                       # STUB
-    ├── user-stories/pages/GuidedProcessPage.tsx    # STUB
+    │   ├── pageHeader.module.css      # Canonical page title + subtitle pattern (compose from this)
+    │   └── PlaceholderPage.module.css # Shared placeholder page (Overview, Care Journey, Map, Guided Process)
+    ├── overview/pages/OverviewPage.tsx                 # STUB (uses PlaceholderPage)
+    ├── care-journey/pages/VisualizationPage.tsx        # STUB (uses PlaceholderPage)
+    ├── map/pages/MapPage.tsx                            # STUB (uses PlaceholderPage)
+    ├── user-stories/
+    │   ├── storiesData.ts             # Mock stories, types, categories, colors
+    │   └── pages/
+    │       ├── UserStoriesPage.tsx + .module.css       # Landing (filters, story grid)
+    │       ├── StoryPage.tsx + .module.css             # Story detail (all 7 render types)
+    │       ├── CreateStoryPage.tsx + .module.css       # Wizard shell (5 steps, segmented bar)
+    │       ├── Step1Topic.tsx + .module.css            # Select a Category + tips carousel
+    │       ├── Step2StoryType.tsx + .module.css        # Pick formats
+    │       ├── Step3Story.tsx + .module.css            # Upload / Write / Guided
+    │       ├── Step4Review.tsx + .module.css           # Include/exclude formats
+    │       ├── Step5Publish.tsx + .module.css          # Consent + signature + thank-you
+    │       └── GuidedProcessPage.tsx                   # STUB (unused by router, kept for reference)
     └── admin/
         ├── adminIcons.tsx             # Shared SVG icon components for admin feature
         ├── adminForm.module.css       # Shared form styles (composed into form modules)
@@ -122,19 +137,22 @@ type ProductKey = 'care-journey' | 'map' | 'user-stories'
 
 ## Routes
 
-| Path               | Component            | Guard                        |
-|--------------------|----------------------|------------------------------|
-| `/login`           | LoginPage            | Public                       |
-| `/register`        | RegisterPage         | Public                       |
-| `/forgot-password` | ForgotPasswordPage   | Public                       |
-| `/care-journey`    | VisualizationPage    | product: care-journey        |
-| `/map`             | MapPage              | product: map                 |
-| `/user-stories`    | GuidedProcessPage    | product: user-stories        |
-| `/admin`           | AdminPage            | adminOnly                    |
-| `/unauthorized`    | UnauthorizedPage     | Public (error)               |
-| `/*`               | NotFoundPage         | Public (error)               |
+| Path                    | Component            | Guard                        |
+|-------------------------|----------------------|------------------------------|
+| `/login`                | LoginPage            | Public                       |
+| `/register`             | RegisterPage         | Public                       |
+| `/forgot-password`      | ForgotPasswordPage   | Public                       |
+| `/` + `/overview`       | OverviewPage         | Login required               |
+| `/care-journey`         | VisualizationPage    | product: care-journey        |
+| `/map`                  | MapPage              | product: map                 |
+| `/user-stories`         | UserStoriesPage      | product: user-stories        |
+| `/user-stories/create`  | CreateStoryPage      | product: user-stories        |
+| `/user-stories/:id`     | StoryPage            | product: user-stories        |
+| `/admin`                | AdminPage            | adminOnly                    |
+| `/unauthorized`         | UnauthorizedPage     | Public (error)               |
+| `/*`                    | NotFoundPage         | Public (error)               |
 
-Root `/` redirects to `/care-journey`.
+Root `/` renders `OverviewPage` (the dashboard home).
 
 ## Admin Panel
 
@@ -206,17 +224,37 @@ All admin forms share:
 
 **OrgUserForm** — toggles: Research Participant; fields: name, email, county, org; toggles: Authorization Capacity, Data access/upload, Admin, Care Journey, User Stories, Map access
 
-## Shared Admin Utilities
+## Shared Utilities
 
-### `adminIcons.tsx`
+### `features/_shared/pageHeader.module.css`
+Canonical page title + subtitle pattern — **all main page titles compose from this, never duplicate**. Exports:
+- `.title` — `1.875rem` / weight 400 / `var(--brand-green)`, `width: fit-content`, with a `::after` pseudo rendering an animated soft-blue underline (`rgba(119, 175, 216, 0.36)`, 12px tall, scales in on load via `titleUnderlineIn` keyframe).
+- `.subtitle` — `0.9rem` / `var(--brand-green)`.
+
+Used by: `UserStoriesPage`, `CreateStoryPage`, `StoryPage`, `PlaceholderPage` (Overview / Care Journey / Map), `StatusPage` (403/404). Auth pages and admin forms use their own styling intentionally.
+
+### `features/admin/adminIcons.tsx`
 Single source for all admin SVG icons. Import from here, never define locally:
 - `IconArrowLeft`, `IconTrash({ size? })`, `IconWarning`, `IconX`, `IconEdit`, `IconCheck`
 
-### `adminForm.module.css`
+### `features/admin/adminForm.module.css`
 Shared form styles used via CSS Modules `composes`. Each form module composes from here and only defines what's unique. Shared classes: `card`, `titleRow`, `backBtn`, `title`, `divider`, `section`, `sectionTitle`, `twoCol`, `field`, `label`, `input`, `select`, `actions`, `actionsLeft`, `primaryBtn`, `cancelBtn`, `deleteBtn`, `deleteConfirmBtn`, `toast`, `toastIcon`, `toastMessage`, `toastClose`.
 
-### `serviceIcons.tsx`
+### `features/admin/pages/serviceIcons.tsx`
 Maps service name strings to SVG icons: Emergency Department, Behavioral Health Resources, Housing, Food Resources, naloxone availability, stabilization center.
+
+## Design Tokens
+
+Defined in `src/index.css` under `:root`. Always reference via `var(--name)` — never hardcode these hex values:
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--brand-blue` | `#77AFD8` | Primary blue — borders, buttons, progress segments, title underline |
+| `--brand-blue-dark` | `#1F5C8E` | Text & icons that need contrast on white (WCAG AAA ~7:1) |
+| `--brand-blue-hover` | `#5e9bc8` | Darker border on hover |
+| `--brand-blue-tint` | `#f0f7fc` | Subtle hover background |
+| `--brand-green` | `#274844` | Page titles, page subtitles, sidebar active, body text in headers |
+| `--brand-tan` | `#DEDCCA` | Warm neutral |
 
 ## App Shell
 
@@ -233,19 +271,23 @@ Maps service name strings to SVG icons: Emergency Department, Behavioral Health 
 - App shell with responsive sidebar
 - Error pages (403, 404)
 - Full admin panel (super admins, organizations, org user management) with role-based views
+- **User Stories** — full landing (filters, search, story grid), story detail (7 render types: text, audio, brochure, journey, infographic, quotes, wordcloud), and Create a Story wizard (5 steps: Category → Type → Story → Review → Publish, with segmented progress bar and animated thank-you)
 
 ### Stubbed (empty canvases — ready for implementation)
+- `/` + `/overview` — OverviewPage
 - `/care-journey` — VisualizationPage
 - `/map` — MapPage
-- `/user-stories` — GuidedProcessPage
 - Password reset (no API wired)
 - No real backend — all data is in-memory mock state
 
 ## Conventions
 
 - **CSS Modules** for all component styles — co-located with their component
+- **Shared page title/subtitle** — compose `.title` and `.subtitle` from `features/_shared/pageHeader.module.css`, never re-implement the animated underline or subtitle color
 - **Shared admin styles** — compose from `adminForm.module.css`, never duplicate
 - **Shared admin icons** — import from `adminIcons.tsx`, never define locally
+- **Brand colors** — reference via `var(--brand-*)` tokens from `index.css`, never hardcode the hex
 - **Feature modules** live under `src/features/<feature-name>/` with a `pages/` subdirectory
+- **Category vs Topic**: the user-facing term is **"category"** (matches the `StoryCategory` type and `STORY_CATEGORIES` constant). Internal prop/var names like `topic` on the wizard are private wiring.
 - TypeScript strict mode enabled (`noUnusedLocals`, `noUnusedParameters`)
 - No default exports from context files — use named exports

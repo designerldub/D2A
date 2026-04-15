@@ -9,7 +9,6 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
   margin-bottom: 1.75rem;
 }
 
@@ -18,6 +17,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
 }
 
 .createBtn {
@@ -43,21 +49,11 @@
 .createBtn:active { transform: translateY(1px); }
 
 .title {
-  margin: 0;
-  font-size: 1.875rem;
-  font-weight: 400;
-  color: var(--brand-green);
-  letter-spacing: -0.02em;
-  text-align: left;
-  line-height: 1.1;
+  composes: title from '../../_shared/pageHeader.module.css';
 }
 
 .subtitle {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #6b7280;
-  text-align: left;
-  line-height: 1.2;
+  composes: subtitle from '../../_shared/pageHeader.module.css';
 }
 
 /* ── Filters ─────────────────────────────────────── */
@@ -142,7 +138,7 @@
   border: 1px solid transparent;
   border-bottom-color: #e5e7eb;
   border-radius: 0;
-  color: #9ca3af;
+  color: var(--brand-blue-dark);
   transition: border-color 0.15s, color 0.15s;
   min-width: 0;
   width: 100%;
@@ -158,13 +154,13 @@
   outline: none;
   font-family: inherit;
   font-size: 0.78rem;
-  color: #4b5563;
+  color: var(--brand-blue-dark);
   flex: 1;
   min-width: 0;
   padding: 0;
 }
 
-.searchInput::placeholder { color: #9ca3af; }
+.searchInput::placeholder { color: var(--brand-blue-dark); }
 .searchInput::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
 
 /* ── Custom Dropdown ─────────────────────────────── */
@@ -187,7 +183,7 @@
   border-bottom-color: #e5e7eb;
   border-radius: 0;
   font-size: 0.78rem;
-  color: #6b7280;
+  color: var(--brand-blue-dark);
   cursor: pointer;
   outline: none;
   transition: border-color 0.15s, color 0.15s;
@@ -196,7 +192,7 @@
   box-sizing: border-box;
 }
 
-.dropdownTrigger:hover { border-bottom-color: #d1d5db; color: #4b5563; }
+.dropdownTrigger:hover { border-bottom-color: #d1d5db; color: var(--brand-blue-dark); }
 .dropdownTrigger:focus-visible { border-bottom-color: var(--brand-blue-dark); color: var(--brand-blue-dark); }
 
 .dropdownLabel {
@@ -367,7 +363,7 @@
 
 .cardOrg {
   font-size: 0.775rem;
-  color: #6b7280;
+  color: var(--brand-blue-dark);
   text-align: left;
   white-space: nowrap;
   overflow: hidden;

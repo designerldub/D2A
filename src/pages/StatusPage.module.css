@@ -18,11 +18,8 @@
 }
 
 .title {
-  margin: 0.25rem 0 0;
-  font-size: 1.875rem;
-  font-weight: 400;
-  color: var(--brand-green);
-  line-height: 1.1;
+  composes: title from '../features/_shared/pageHeader.module.css';
+  margin-top: 0.25rem;
 }
 
 .body {
