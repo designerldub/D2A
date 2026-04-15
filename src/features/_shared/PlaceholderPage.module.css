@@ -13,21 +13,11 @@
 }
 
 .title {
-  margin: 0;
-  font-size: 1.875rem;
-  font-weight: 400;
-  color: var(--brand-green);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  text-align: left;
+  composes: title from './pageHeader.module.css';
 }
 
 .subtitle {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #6b7280;
-  line-height: 1.2;
-  text-align: left;
+  composes: subtitle from './pageHeader.module.css';
 }
 
 .canvas {

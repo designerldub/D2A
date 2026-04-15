@@ -2,17 +2,32 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
-/* ── Intro copy ──────────────────────────────────── */
+/* ── Step header (below carousel) ────────────────── */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--brand-green);
+  text-align: left;
+  line-height: 1.2;
+}
 
 .intro {
   margin: 0;
   font-size: 0.95rem;
   color: #4b5563;
   line-height: 1.55;
-  text-align: center;
+  text-align: left;
 }
 
 /* ── Tips carousel ───────────────────────────────── */
@@ -21,9 +36,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  padding: 0.25rem;
-  max-width: 560px;
-  margin: 0 auto;
   width: 100%;
 }
 

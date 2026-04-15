@@ -46,12 +46,14 @@ export function UserStoriesPage() {
       {/* ── Header ── */}
       <div className={styles.header}>
         <div className={styles.titleRow}>
-          <h1 className={styles.title}>User Stories</h1>
+          <div className={styles.headerText}>
+            <h1 className={styles.title}>User Stories</h1>
+            <p className={styles.subtitle}>Anonymous stories of recovery, resilience, and community</p>
+          </div>
           <button className={styles.createBtn} onClick={() => navigate('/user-stories/create')}>
             <IconPlus /> Create a Story
           </button>
         </div>
-        <p className={styles.subtitle}>Anonymous stories of recovery, resilience, and community</p>
       </div>
 
       {/* ── Filters ── */}

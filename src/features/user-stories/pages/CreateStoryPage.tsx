@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { StoryCategory, StoryType } from '../storiesData'
 import { Step1Topic } from './Step1Topic'
@@ -17,7 +17,7 @@ type StepDef = {
 }
 
 const STEPS: StepDef[] = [
-  { num: 1, label: 'Select a Topic', short: 'Topic'   },
+  { num: 1, label: 'Select a Category', short: 'Category' },
   { num: 2, label: 'Story Type',     short: 'Type'    },
   { num: 3, label: 'Story',          short: 'Story'   },
   { num: 4, label: 'Review',         short: 'Review'  },
@@ -58,6 +58,12 @@ export function CreateStoryPage() {
   const navigate = useNavigate()
   const [currentStep, setCurrentStep] = useState(1)
   const [draft, setDraft] = useState<StoryDraft>(INITIAL_DRAFT)
+  const stepContainerRef = useRef<HTMLDivElement>(null)
+
+  // Reset step container scroll to top whenever the step changes
+  useEffect(() => {
+    stepContainerRef.current?.scrollTo({ top: 0 })
+  }, [currentStep])
 
   const isFirst = currentStep === 1
   const isLast = currentStep === STEPS.length
@@ -120,7 +126,7 @@ export function CreateStoryPage() {
         </button>
         <div className={styles.headerText}>
           <h1 className={styles.title}>Create a Story</h1>
-          <p className={styles.subtitle}>Share an anonymous story with your community in six quick steps.</p>
+          <p className={styles.subtitle}>Share an anonymous story with your community in 5 steps.</p>
         </div>
       </div>
 
@@ -128,16 +134,18 @@ export function CreateStoryPage() {
       <ProgressIndicator currentStep={currentStep} />
 
       {/* ── Step content ── */}
-      <div className={styles.stepContainer}>
-        <div className={styles.stepHeader}>
-          <span className={styles.stepEyebrow}>Step {currentStep} of {STEPS.length}</span>
-          <h2 className={styles.stepTitle}>{currentDef.label}</h2>
-        </div>
+      <div className={styles.stepContainer} ref={stepContainerRef}>
+        {currentStep !== 1 && (
+          <div className={styles.stepHeader}>
+            <h2 className={styles.stepTitle}>{currentDef.label}</h2>
+          </div>
+        )}
 
         <div className={styles.stepBody}>
           {currentStep === 1 && (
             <Step1Topic
               topic={draft.topic}
+              title={currentDef.label}
               onChange={(topic) => setDraft((d) => ({ ...d, topic }))}
             />
           )}
@@ -229,28 +237,31 @@ export function CreateStoryPage() {
 // ── Progress indicator ────────────────────────────────
 
 function ProgressIndicator({ currentStep }: { currentStep: number }) {
+  const current = STEPS[currentStep - 1]
   return (
-    <div className={styles.progress} role="progressbar" aria-valuemin={1} aria-valuemax={STEPS.length} aria-valuenow={currentStep}>
-      {STEPS.map((step, i) => {
-        const isDone = step.num < currentStep
-        const isActive = step.num === currentStep
-        const state = isDone ? 'done' : isActive ? 'active' : 'upcoming'
-        return (
-          <div key={step.num} className={styles.progressItem}>
-            <div className={styles.progressNodeWrap}>
-              <div className={`${styles.progressNode} ${styles[state]}`}>
-                {isDone ? <IconCheck /> : <span>{step.num}</span>}
-              </div>
-              {i < STEPS.length - 1 && (
-                <div className={`${styles.progressLine} ${step.num < currentStep ? styles.lineDone : ''}`} />
-              )}
-            </div>
-            <span className={`${styles.progressLabel} ${isActive ? styles.labelActive : ''}`}>
-              {step.short}
-            </span>
-          </div>
-        )
-      })}
+    <div
+      className={styles.progress}
+      role="progressbar"
+      aria-valuemin={1}
+      aria-valuemax={STEPS.length}
+      aria-valuenow={currentStep}
+      aria-label={`Step ${currentStep} of ${STEPS.length}: ${current.label}`}
+    >
+      <div className={styles.progressCaption}>
+        <span className={styles.progressStepNum}>Step {currentStep} of {STEPS.length}</span>
+      </div>
+      <div className={styles.progressTrack} aria-hidden="true">
+        {STEPS.map((step) => {
+          const state =
+            step.num < currentStep ? 'done' : step.num === currentStep ? 'active' : 'upcoming'
+          return (
+            <div
+              key={step.num}
+              className={`${styles.progressSegment} ${styles[state]}`}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -259,8 +270,4 @@ function ProgressIndicator({ currentStep }: { currentStep: number }) {
 
 function IconArrowLeft() {
   return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
-}
-
-function IconCheck() {
-  return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
 }

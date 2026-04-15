@@ -35,6 +35,15 @@ export function Step5Publish({
     <div className={styles.step}>
       {/* ── Warm thank-you ── */}
       <div className={styles.thankYou}>
+        <span className={`${styles.sparkle} ${styles.sparkle1}`} aria-hidden="true">
+          <IconSparkle />
+        </span>
+        <span className={`${styles.sparkle} ${styles.sparkle2}`} aria-hidden="true">
+          <IconSparkle />
+        </span>
+        <span className={`${styles.sparkle} ${styles.sparkle3}`} aria-hidden="true">
+          <IconSparkle />
+        </span>
         <div className={styles.heartBadge} aria-hidden="true">
           <IconHeart />
         </div>
@@ -148,7 +157,7 @@ function buildSummary(includedTypes: StoryType[], topic: StoryCategory | null): 
       ? `${formatList[0]} and ${formatList[1]}`
       : `${formatList.slice(0, -1).join(', ')}, and ${formatList[formatList.length - 1]}`
 
-  const topicText = topic ? ` on the topic of ${topic}` : ''
+  const topicText = topic ? ` in the ${topic} category` : ''
   const plural = includedTypes.length === 1 ? 'format' : 'formats'
   return `You're about to publish ${includedTypes.length} ${plural} (${formatText})${topicText}.`
 }

@@ -6,6 +6,7 @@ import styles from './Step1Topic.module.css'
 
 type Props = {
   topic: StoryCategory | null
+  title: string
   onChange: (topic: StoryCategory) => void
 }
 
@@ -67,14 +68,17 @@ const TIPS: Tip[] = [
 
 // ── Component ────────────────────────────────────────
 
-export function Step1Topic({ topic, onChange }: Props) {
+export function Step1Topic({ topic, title, onChange }: Props) {
   return (
     <div className={styles.step}>
-      <p className={styles.intro}>
-        Pick the topic that best fits the story you&apos;d like to share. You can always change your mind later.
-      </p>
-
       <TipsCarousel />
+
+      <div className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.intro}>
+          Pick the category that best fits the story you&apos;d like to share. You can always change your mind later.
+        </p>
+      </div>
 
       <div className={styles.grid}>
         {STORY_CATEGORIES.map((cat) => {

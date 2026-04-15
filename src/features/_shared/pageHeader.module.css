@@ -1,0 +1,43 @@
+/* Shared page header pattern — big h1 with animated soft-blue underline,
+   brand-green subtitle. Composed into each page's local module via
+   `composes: title from ...`. */
+
+.title {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: var(--brand-green);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-align: left;
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 12px;
+  background: rgba(119, 175, 216, 0.36);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: titleUnderlineIn 0.85s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+}
+
+@keyframes titleUnderlineIn {
+  to { transform: scaleX(1); }
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--brand-green);
+  line-height: 1.2;
+  text-align: left;
+}
