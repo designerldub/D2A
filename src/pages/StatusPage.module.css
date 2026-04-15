@@ -19,21 +19,22 @@
 
 .title {
   margin: 0.25rem 0 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1a1a2e;
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: var(--brand-green);
+  line-height: 1.1;
 }
 
 .body {
   margin: 0;
   font-size: 0.9rem;
-  color: #666;
+  color: #6b7280;
 }
 
 .link {
   margin-top: 0.75rem;
   font-size: 0.9rem;
-  color: #3a3a6e;
+  color: var(--brand-blue-dark);
   text-decoration: none;
   font-weight: 600;
 }

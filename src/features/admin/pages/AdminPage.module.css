@@ -16,7 +16,7 @@
 
 .card {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #e5e7eb;
   overflow: hidden;
 }
@@ -32,8 +32,8 @@
 .cardTitle {
   margin: 0;
   font-size: 1.25rem;
-  font-weight: 700;
-  color: #111827;
+  font-weight: 600;
+  color: var(--brand-green);
   letter-spacing: -0.01em;
 }
 
@@ -41,20 +41,24 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  background: #374151;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.4rem 0.85rem;
+  background: #ffffff;
+  color: var(--brand-blue-dark);
+  border: 2px solid var(--brand-blue);
+  border-radius: 8px;
+  padding: 0.35rem 0.85rem;
   font-size: 0.825rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: inherit;
 }
 
 .addBtn:hover {
-  background: #1f2937;
+  background: var(--brand-blue-tint);
+  border-color: var(--brand-blue-hover);
 }
+
+.addBtn:focus-visible { outline: 2px solid var(--brand-blue-dark); outline-offset: 2px; }
 
 .addBtn span {
   font-size: 1.1rem;
@@ -201,7 +205,7 @@
   background: none;
   border: none;
   padding: 0;
-  color: #111827;
+  color: var(--brand-blue-dark);
   font-size: inherit;
   font-family: inherit;
   cursor: pointer;
@@ -213,8 +217,8 @@
 }
 
 .orgNameBtn:hover {
-  color: #374151;
-  text-decoration-color: #9ca3af;
+  color: var(--brand-blue-dark);
+  text-decoration-color: var(--brand-blue);
 }
 
 @media (max-width: 768px) {

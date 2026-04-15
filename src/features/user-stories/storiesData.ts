@@ -6,8 +6,8 @@ export type StoryType = typeof STORY_TYPES[number]
 export const TYPE_LABELS: Record<StoryType, string> = {
   text:        'Text',
   audio:       'Audio',
-  brochure:    'AI Brochure',
-  journey:     'Visual Journey',
+  brochure:    'Brochure',
+  journey:     'Journey',
   infographic: 'Infographic',
   quotes:      'Quotes',
   wordcloud:   'Word Cloud',

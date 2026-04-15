@@ -96,26 +96,29 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: #111827;
-  border: none;
-  border-radius: 6px;
-  padding: 0.4rem 0.875rem;
+  background: #ffffff;
+  border: 2px solid var(--brand-blue);
+  border-radius: 8px;
+  padding: 0.35rem 0.875rem;
   font-size: 0.8rem;
-  color: #ffffff;
+  font-weight: 600;
+  color: var(--brand-blue-dark);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
   font-family: inherit;
 }
 
-.contactBtn:hover { background: #374151; }
+.contactBtn:hover { background: var(--brand-blue-tint); border-color: var(--brand-blue-hover); }
+.contactBtn:focus-visible { outline: 2px solid var(--brand-blue-dark); outline-offset: 2px; }
 
 .title {
   margin: 0;
-  font-size: 2rem;
-  font-weight: 800;
-  color: #111827;
-  line-height: 1.2;
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: var(--brand-green);
+  line-height: 1.1;
   letter-spacing: -0.02em;
+  text-align: left;
 }
 
 .headerFooter {
@@ -127,7 +130,7 @@
 
 .org {
   font-size: 0.825rem;
-  color: #9ca3af;
+  color: #6b7280;
 }
 
 .tags {
@@ -1095,26 +1098,27 @@
 .modalTextarea::placeholder { color: #9ca3af; }
 
 .modalInput:focus,
-.modalTextarea:focus { border-color: #2a9d8f; background: #ffffff; }
+.modalTextarea:focus { border-color: var(--brand-blue-dark); background: #ffffff; }
 
 .modalTextarea { resize: vertical; line-height: 1.55; }
 
 .sendBtn {
   width: 100%;
-  background: #2a9d8f;
-  color: #ffffff;
-  border: none;
+  background: #ffffff;
+  color: var(--brand-blue-dark);
+  border: 2px solid var(--brand-blue);
   border-radius: 10px;
-  padding: 0.875rem;
+  padding: 0.75rem;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   margin-top: 0.25rem;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
   font-family: inherit;
 }
 
-.sendBtn:hover { background: #21867a; }
+.sendBtn:hover { background: var(--brand-blue-tint); border-color: var(--brand-blue-hover); }
+.sendBtn:focus-visible { outline: 2px solid var(--brand-blue-dark); outline-offset: 2px; }
 
 .privacyNote {
   margin: 0.75rem 0 0;
@@ -1161,20 +1165,20 @@
 }
 
 .sentClose {
-  background: #111827;
-  color: #ffffff;
-  border: none;
+  background: #ffffff;
+  color: var(--brand-blue-dark);
+  border: 2px solid var(--brand-blue);
   border-radius: 8px;
-  padding: 0.55rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 0.25rem;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
   font-family: inherit;
 }
 
-.sentClose:hover { background: #374151; }
+.sentClose:hover { background: var(--brand-blue-tint); border-color: var(--brand-blue-hover); }
 
 /* ── Responsive ──────────────────────────────────── */
 
