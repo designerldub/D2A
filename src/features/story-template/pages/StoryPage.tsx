@@ -15,7 +15,7 @@ export function StoryPage() {
     return (
       <div className={styles.notFound}>
         <p>Story not found.</p>
-        <button className={styles.backLink} onClick={() => navigate('/user-stories')}>← Back to User Stories</button>
+        <button className={styles.backLink} onClick={() => navigate('/story-template')}>← Back to Story Template</button>
       </div>
     )
   }
@@ -33,8 +33,8 @@ export function StoryPage() {
       {/* ── Header ── */}
       <div className={styles.header}>
         <div className={styles.headerNav}>
-          <button className={styles.backBtn} onClick={() => navigate('/user-stories')}>
-            <IconArrowLeft /> User Stories
+          <button className={styles.backBtn} onClick={() => navigate('/story-template')}>
+            <IconArrowLeft /> Story Template
           </button>
           <div className={styles.headerActions}>
             <button className={styles.actionBtn} onClick={handleShare}>

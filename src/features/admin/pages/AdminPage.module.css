@@ -7,6 +7,26 @@
   box-sizing: border-box;
 }
 
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+  align-self: flex-start;
+  transition: color 0.15s;
+  margin-bottom: -0.5rem;
+}
+
+.backLink:hover {
+  color: #111827;
+}
+
 .topRow {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -26,7 +46,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.1rem 1.25rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  min-height: 76px;
+  box-sizing: border-box;
 }
 
 .cardTitle {
@@ -35,6 +56,25 @@
   font-weight: 600;
   color: var(--brand-green);
   letter-spacing: -0.01em;
+}
+
+.cardCount {
+  font-weight: 400;
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-left: 0.25rem;
+}
+
+.adminName {
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.adminEmail {
+  font-size: 0.78rem;
+  color: #6b7280;
+  line-height: 1.2;
 }
 
 .addBtn {
@@ -65,6 +105,11 @@
   line-height: 1;
 }
 
+.productHeader {
+  height: 42px;
+  background: var(--brand-blue-tint);
+}
+
 .productList {
   list-style: none;
   margin: 0;
@@ -89,13 +134,18 @@
 }
 
 .statusActive {
-  color: #16a34a;
+  color: #15803d;
   font-size: 0.875rem;
 }
 
 .tableWrapper {
   overflow-y: auto;
   max-height: 240px;
+}
+
+.tableWrapperAuto {
+  max-height: none;
+  overflow-y: visible;
 }
 
 .table {
@@ -110,9 +160,8 @@
   text-align: left;
   font-size: 0.78rem;
   font-weight: 500;
-  color: #6b7280;
-  border-bottom: 1px solid #e5e7eb;
-  background: #fff;
+  color: var(--brand-blue-dark);
+  background: var(--brand-blue-tint);
   position: sticky;
   top: 0;
   white-space: nowrap;
@@ -197,6 +246,57 @@
 
 .editBtn:hover {
   color: #111827;
+}
+
+/* ── Status dot + numeric column ─────────────────── */
+
+.statusDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.statusDot_green {
+  background: #22c55e;
+}
+
+.statusDot_yellow {
+  background: #eab308;
+}
+
+.statusDot_red {
+  background: #ef4444;
+}
+
+.statusDot_na {
+  background: #9ca3af;
+}
+
+.statusCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.orgCounts {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.countToken {
+  display: inline-block;
+  background: #f3f4f6;
+  color: #4b5563;
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 /* ── Clickable org name ──────────────────────────── */

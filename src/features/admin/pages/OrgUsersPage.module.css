@@ -48,19 +48,51 @@
 
 .headerInfo {
   display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
   min-width: 0;
-  flex-wrap: wrap;
+}
+
+.orgNameRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .orgName {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--brand-green);
   letter-spacing: -0.01em;
   white-space: nowrap;
+}
+
+.editOrgBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #ffffff;
+  color: var(--brand-blue-dark);
+  border: 1px solid var(--brand-blue);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.editOrgBtn:hover {
+  background: var(--brand-blue-tint);
+  border-color: var(--brand-blue-hover);
+}
+
+.editOrgBtn:focus-visible {
+  outline: 2px solid var(--brand-blue-dark);
+  outline-offset: 2px;
 }
 
 .county {
@@ -96,6 +128,44 @@
   margin: 0;
 }
 
+/* ── Tabs ────────────────────────────────────────── */
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab:hover {
+  color: #111827;
+}
+
+.tabActive {
+  color: var(--brand-blue-dark);
+  border-bottom-color: var(--brand-blue);
+}
+
+.tabCount {
+  color: #9ca3af;
+  font-weight: 400;
+  margin-left: 0.15rem;
+}
+
 /* ── Empty state ─────────────────────────────────── */
 
 .empty {
@@ -124,9 +194,8 @@
   text-align: left;
   font-size: 0.78rem;
   font-weight: 500;
-  color: #6b7280;
-  border-bottom: 1px solid #e5e7eb;
-  background: #fff;
+  color: var(--brand-blue-dark);
+  background: var(--brand-blue-tint);
   position: sticky;
   top: 0;
   white-space: nowrap;
@@ -151,6 +220,107 @@
   padding: 0.7rem 1rem;
   color: #111827;
   vertical-align: middle;
+  text-align: left;
+}
+
+.tdCenter {
+  padding: 0.7rem 1rem;
+  color: #111827;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.thCenter {
+  text-align: center;
+}
+
+.thSortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.thSortable:hover {
+  color: #374151;
+  background: #f9fafb;
+}
+
+.thActive {
+  color: #111827;
+}
+
+/* ── Status + service chips (Resources tab) ──────── */
+
+.statusDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.statusDot_green { background: #22c55e; }
+.statusDot_yellow { background: #eab308; }
+.statusDot_red { background: #ef4444; }
+.statusDot_na { background: #9ca3af; }
+
+.orgStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  white-space: nowrap;
+}
+
+.statusCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.serviceCell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.resourceNameBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--brand-blue-dark);
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: transparent;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.resourceNameBtn:hover {
+  text-decoration-color: var(--brand-blue);
+}
+
+.serviceChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #f3f4f6;
+  color: #374151;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
 }
 
 .editBtn {
@@ -172,12 +342,16 @@
 .userName {
   font-weight: 500;
   color: #111827;
+  text-align: left;
+  line-height: 1.2;
 }
 
 .userEmail {
   font-size: 0.78rem;
-  color: #9ca3af;
-  margin-top: 0.1rem;
+  color: #6b7280;
+  text-align: left;
+  line-height: 1.2;
+  margin-top: 0;
 }
 
 /* ── Access chips ────────────────────────────────── */

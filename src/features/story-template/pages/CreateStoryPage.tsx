@@ -98,7 +98,7 @@ export function CreateStoryPage() {
 
   function handleBack() {
     if (isFirst) {
-      navigate('/user-stories')
+      navigate('/story-template')
     } else {
       setCurrentStep((s) => s - 1)
     }
@@ -107,22 +107,22 @@ export function CreateStoryPage() {
   function handleNext() {
     if (!canContinue) return
     if (isLast) {
-      navigate('/user-stories')
+      navigate('/story-template')
     } else {
       setCurrentStep((s) => s + 1)
     }
   }
 
   function handleCancel() {
-    navigate('/user-stories')
+    navigate('/story-template')
   }
 
   return (
     <div className={styles.page}>
       {/* ── Header ── */}
       <div className={styles.header}>
-        <button className={styles.backLink} onClick={() => navigate('/user-stories')}>
-          <IconArrowLeft /> User Stories
+        <button className={styles.backLink} onClick={() => navigate('/story-template')}>
+          <IconArrowLeft /> Story Template
         </button>
         <div className={styles.headerText}>
           <h1 className={styles.title}>Create a Story</h1>

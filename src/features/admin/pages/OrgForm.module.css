@@ -181,3 +181,57 @@
 }
 
 .addTypeConfirmBtn:hover { background: #1f2937; }
+
+/* ── Status picker ───────────────────────────────── */
+
+.statusPicker {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.statusOption {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  background: #fff;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+.statusOption:hover {
+  background: var(--brand-blue-tint);
+  border-color: var(--brand-blue);
+}
+
+.statusOptionActive {
+  border-color: var(--brand-blue);
+  background: var(--brand-blue-tint);
+  color: var(--brand-blue-dark);
+  font-weight: 500;
+}
+
+.statusRadio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.statusDot_green { background: #22c55e; }
+.statusDot_yellow { background: #eab308; }
+.statusDot_red { background: #ef4444; }
+.statusDot_na { background: #9ca3af; }

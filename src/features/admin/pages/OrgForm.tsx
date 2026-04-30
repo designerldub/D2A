@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, type FormEvent } from 'react'
-import type { Organization } from './AdminPage'
-import { IconArrowLeft, IconTrash, IconWarning, IconX } from '../adminIcons'
+import { STATUS_LABEL, STATUS_OPTIONS, type Organization, type OrgStatus } from './AdminPage'
+import { IconTrash, IconWarning, IconX } from '../adminIcons'
 import styles from './OrgForm.module.css'
 import { ServiceIcon } from './serviceIcons'
 
@@ -23,10 +23,12 @@ const DEFAULT_SERVICE_TYPES = [
 
 type Props = {
   mode: 'add' | 'edit'
-  initialData?: Organization
+  initialData?: Partial<Omit<Organization, 'id'>>
   onSave: (data: Omit<Organization, 'id'>) => void
   onCancel: () => void
   onDelete?: () => void
+  entityName?: string
+  showStatus?: boolean
 }
 
 function CountySelect({
@@ -94,9 +96,11 @@ function CountySelect({
   )
 }
 
-export function OrgForm({ mode, initialData, onSave, onCancel, onDelete }: Props) {
+export function OrgForm({ mode, initialData, onSave, onCancel, onDelete, entityName = 'Organization', showStatus = false }: Props) {
   const [name, setName] = useState(initialData?.name ?? '')
   const [address, setAddress] = useState(initialData?.address ?? '')
+  const [website, setWebsite] = useState(initialData?.website ?? '')
+  const [status, setStatus] = useState<OrgStatus>(initialData?.status ?? 'na')
   const [counties, setCounties] = useState<string[]>(initialData?.counties ?? [])
   const [category, setCategory] = useState(initialData?.category ?? '')
   const [contactName, setContactName] = useState(initialData?.contactName ?? '')
@@ -107,9 +111,9 @@ export function OrgForm({ mode, initialData, onSave, onCancel, onDelete }: Props
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
-  const initialCustomTypes = initialData
-    ? initialData.services.filter((s) => !DEFAULT_SERVICE_TYPES.includes(s))
-    : []
+  const initialCustomTypes = (initialData?.services ?? []).filter(
+    (s) => !DEFAULT_SERVICE_TYPES.includes(s)
+  )
   const [serviceTypes, setServiceTypes] = useState<string[]>([
     ...DEFAULT_SERVICE_TYPES,
     ...initialCustomTypes,
@@ -155,7 +159,7 @@ export function OrgForm({ mode, initialData, onSave, onCancel, onDelete }: Props
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
     const services = serviceTypes.filter((t) => checkedServices.has(t))
-    onSave({ name, address, counties, category, contactName, contactEmail, contactPhone, hours, description, services })
+    onSave({ name, address, website, counties, category, contactName, contactEmail, contactPhone, hours, description, services, status })
   }
 
   function handleDelete() {
@@ -167,53 +171,82 @@ export function OrgForm({ mode, initialData, onSave, onCancel, onDelete }: Props
     onDelete?.()
   }
 
-  const title = mode === 'add' ? 'Add Organization' : 'Edit Organization'
-  const submitLabel = mode === 'add' ? 'Add Organization' : 'Save Changes'
+  const title = mode === 'add' ? `Add ${entityName}` : `Edit ${entityName}`
+  const submitLabel = mode === 'add' ? `Add ${entityName}` : 'Save Changes'
 
   return (
     <div className={styles.card}>
-      <div className={styles.titleRow}>
-        <button type="button" className={styles.backBtn} onClick={onCancel} aria-label="Go back">
-          <IconArrowLeft />
-          Back
-        </button>
-      </div>
       <h1 className={styles.title}>{title}</h1>
       <hr className={styles.divider} />
 
       <form onSubmit={handleSubmit}>
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Organization Information</h2>
+          <h2 className={styles.sectionTitle}>{entityName} Information</h2>
 
           <div className={styles.field}>
-            <label className={styles.label} htmlFor="orgName">Organization Name</label>
+            <label className={styles.label} htmlFor="orgName">{entityName} Name</label>
             <input
               id="orgName"
               className={styles.input}
               type="text"
-              placeholder="Organization Name"
+              placeholder={`${entityName} Name`}
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
 
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="orgAddress">Address</label>
-            <input
-              id="orgAddress"
-              className={styles.input}
-              type="text"
-              placeholder="Street address, city, state, ZIP"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
+          <div className={styles.twoCol}>
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="orgAddress">Address</label>
+              <input
+                id="orgAddress"
+                className={styles.input}
+                type="text"
+                placeholder="Street address, city, state, ZIP"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="orgWebsite">Website</label>
+              <input
+                id="orgWebsite"
+                className={styles.input}
+                type="url"
+                placeholder="https://example.org"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+              />
+            </div>
           </div>
 
           <div className={styles.field}>
             <label className={styles.label}>County</label>
             <CountySelect selected={counties} onChange={setCounties} />
           </div>
+
+          {showStatus && (
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="orgStatus">Status</label>
+              <div className={styles.statusPicker}>
+                {STATUS_OPTIONS.map((opt) => (
+                  <label key={opt} className={`${styles.statusOption} ${status === opt ? styles.statusOptionActive : ''}`}>
+                    <input
+                      type="radio"
+                      name="orgStatus"
+                      value={opt}
+                      checked={status === opt}
+                      onChange={() => setStatus(opt)}
+                      className={styles.statusRadio}
+                    />
+                    <span className={`${styles.statusDot} ${styles[`statusDot_${opt}`]}`} aria-hidden="true" />
+                    {STATUS_LABEL[opt]}
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className={styles.field}>
             <label className={styles.label} htmlFor="orgCategory">Category</label>
@@ -286,7 +319,7 @@ export function OrgForm({ mode, initialData, onSave, onCancel, onDelete }: Props
             <textarea
               id="description"
               className={styles.textarea}
-              placeholder="Brief description of this organization…"
+              placeholder={`Brief description of this ${entityName.toLowerCase()}…`}
               rows={3}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -355,7 +388,7 @@ export function OrgForm({ mode, initialData, onSave, onCancel, onDelete }: Props
               onClick={handleDelete}
             >
               <IconTrash size={14} />
-              {confirmDelete ? 'Confirm delete' : 'Delete organization'}
+              {confirmDelete ? 'Confirm delete' : `Delete ${entityName.toLowerCase()}`}
             </button>
           )}
         </div>

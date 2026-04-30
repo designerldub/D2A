@@ -1,9 +1,9 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { STORIES, ORGS, STORY_TYPES, STORY_CATEGORIES, TYPE_LABELS, TYPE_COLORS, type StoryType, type StoryCategory } from '../storiesData'
-import styles from './UserStoriesPage.module.css'
+import styles from './StoryTemplatePage.module.css'
 
-export function UserStoriesPage() {
+export function StoryTemplatePage() {
   const navigate = useNavigate()
   const [activeType, setActiveType] = useState<StoryType | 'all'>('all')
   const [activeCategory, setActiveCategory] = useState<StoryCategory | 'all'>('all')
@@ -35,7 +35,7 @@ export function UserStoriesPage() {
   }, [activeCategory, activeOrg, searchQuery])
 
   function handleShare(id: number) {
-    const url = `${window.location.origin}/user-stories/${id}`
+    const url = `${window.location.origin}/story-template/${id}`
     navigator.clipboard.writeText(url).catch(() => {})
     setCopiedId(id)
     setTimeout(() => setCopiedId(null), 2000)
@@ -47,10 +47,10 @@ export function UserStoriesPage() {
       <div className={styles.header}>
         <div className={styles.titleRow}>
           <div className={styles.headerText}>
-            <h1 className={styles.title}>User Stories</h1>
+            <h1 className={styles.title}>Story Template</h1>
             <p className={styles.subtitle}>Anonymous stories of recovery, resilience, and community</p>
           </div>
-          <button className={styles.createBtn} onClick={() => navigate('/user-stories/create')}>
+          <button className={styles.createBtn} onClick={() => navigate('/story-template/create')}>
             <IconPlus /> Create a Story
           </button>
         </div>
@@ -167,7 +167,7 @@ export function UserStoriesPage() {
                 </div>
 
                 <div className={styles.cardFooter}>
-                  <button className={styles.viewBtn} onClick={() => navigate(`/user-stories/${story.id}`)}>
+                  <button className={styles.viewBtn} onClick={() => navigate(`/story-template/${story.id}`)}>
                     View Story <IconArrowRight />
                   </button>
                 </div>

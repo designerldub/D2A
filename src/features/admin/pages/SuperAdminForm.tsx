@@ -1,6 +1,6 @@
 import { useState, useEffect, type FormEvent } from 'react'
 import type { SuperAdmin } from './AdminPage'
-import { IconArrowLeft, IconTrash, IconWarning, IconX } from '../adminIcons'
+import { IconTrash, IconWarning, IconX } from '../adminIcons'
 import styles from './SuperAdminForm.module.css'
 
 type Props = {
@@ -43,12 +43,6 @@ export function SuperAdminForm({ mode, initialData, onSave, onCancel, onDelete }
 
   return (
     <div className={styles.card}>
-      <div className={styles.titleRow}>
-        <button type="button" className={styles.backBtn} onClick={onCancel} aria-label="Go back">
-          <IconArrowLeft />
-          Back
-        </button>
-      </div>
       <h1 className={styles.title}>{title}</h1>
       <hr className={styles.divider} />
 

@@ -9,9 +9,9 @@ import { UnauthorizedPage } from '../pages/UnauthorizedPage'
 import { OverviewPage } from '../features/overview/pages/OverviewPage'
 import { VisualizationPage } from '../features/care-journey/pages/VisualizationPage'
 import { MapPage } from '../features/map/pages/MapPage'
-import { UserStoriesPage } from '../features/user-stories/pages/UserStoriesPage'
-import { StoryPage } from '../features/user-stories/pages/StoryPage'
-import { CreateStoryPage } from '../features/user-stories/pages/CreateStoryPage'
+import { StoryTemplatePage } from '../features/story-template/pages/StoryTemplatePage'
+import { StoryPage } from '../features/story-template/pages/StoryPage'
+import { CreateStoryPage } from '../features/story-template/pages/CreateStoryPage'
 import { AdminPage } from '../features/admin/pages/AdminPage'
 
 export const router = createBrowserRouter([
@@ -47,13 +47,13 @@ export const router = createBrowserRouter([
           { path: 'map', element: <MapPage /> },
         ],
       },
-      // User Stories — Guided Process
+      // Story Template — Guided Process
       {
-        element: <ProtectedRoute product="user-stories" />,
+        element: <ProtectedRoute product="story-template" />,
         children: [
-          { path: 'user-stories', element: <UserStoriesPage /> },
-          { path: 'user-stories/create', element: <CreateStoryPage /> },
-          { path: 'user-stories/:id', element: <StoryPage /> },
+          { path: 'story-template', element: <StoryTemplatePage /> },
+          { path: 'story-template/create', element: <CreateStoryPage /> },
+          { path: 'story-template/:id', element: <StoryPage /> },
         ],
       },
       // Admin

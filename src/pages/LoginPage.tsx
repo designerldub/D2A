@@ -107,7 +107,7 @@ export function LoginPage() {
           <strong>Dev mode — test credentials</strong><br />
           alice@test.com → all products &nbsp;·&nbsp;
           bob@test.com → care-journey &nbsp;·&nbsp;
-          carol@test.com → map + user-stories<br />
+          carol@test.com → map + story-template<br />
           dana@test.com → super admin &nbsp;·&nbsp;
           eve@test.com → org admin (Org A) &nbsp;·&nbsp;
           frank@test.com → org admin (Orgs B &amp; E)<br />

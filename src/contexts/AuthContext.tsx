@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
 
-export type ProductKey = 'care-journey' | 'map' | 'user-stories'
+export type ProductKey = 'care-journey' | 'map' | 'story-template'
 
 export interface MockUser {
   id: string
@@ -15,7 +15,7 @@ const MOCK_USERS: MockUser[] = [
   {
     id: 'u1',
     name: 'Alice (all products)',
-    products: ['care-journey', 'map', 'user-stories'],
+    products: ['care-journey', 'map', 'story-template'],
     isAdmin: false,
     isSuperAdmin: false,
     orgAdminIds: [],
@@ -30,8 +30,8 @@ const MOCK_USERS: MockUser[] = [
   },
   {
     id: 'u3',
-    name: 'Carol (map + user-stories)',
-    products: ['map', 'user-stories'],
+    name: 'Carol (map + story-template)',
+    products: ['map', 'story-template'],
     isAdmin: false,
     isSuperAdmin: false,
     orgAdminIds: [],
@@ -39,7 +39,7 @@ const MOCK_USERS: MockUser[] = [
   {
     id: 'u4',
     name: 'Dana (super admin)',
-    products: ['care-journey', 'map', 'user-stories'],
+    products: ['care-journey', 'map', 'story-template'],
     isAdmin: true,
     isSuperAdmin: true,
     orgAdminIds: [],
@@ -55,7 +55,7 @@ const MOCK_USERS: MockUser[] = [
   {
     id: 'u6',
     name: 'Frank (org admin — Orgs B & E)',
-    products: ['user-stories'],
+    products: ['story-template'],
     isAdmin: true,
     isSuperAdmin: false,
     orgAdminIds: [2, 5],

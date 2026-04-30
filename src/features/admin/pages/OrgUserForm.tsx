@@ -1,6 +1,6 @@
 import { useState, useEffect, type FormEvent } from 'react'
 import type { Organization, OrgUser } from './AdminPage'
-import { IconArrowLeft, IconTrash, IconWarning } from '../adminIcons'
+import { IconTrash, IconWarning } from '../adminIcons'
 import styles from './OrgUserForm.module.css'
 
 const OREGON_COUNTIES = [
@@ -55,7 +55,7 @@ export function OrgUserForm({ mode, org, orgs, initialData, onSave, onCancel, on
   const [dataAccessUpload, setDataAccessUpload] = useState(initialData?.dataAccessUpload ?? false)
   const [isAdmin, setIsAdmin] = useState(initialData?.isAdmin ?? false)
   const [careJourneyAccess, setCareJourneyAccess] = useState(initialData?.careJourneyAccess ?? false)
-  const [userStoriesAccess, setUserStoriesAccess] = useState(initialData?.userStoriesAccess ?? false)
+  const [storyTemplateAccess, setStoryTemplateAccess] = useState(initialData?.storyTemplateAccess ?? false)
   const [mapAccess, setMapAccess] = useState(initialData?.mapAccess ?? false)
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [showToast, setShowToast] = useState(false)
@@ -68,7 +68,7 @@ export function OrgUserForm({ mode, org, orgs, initialData, onSave, onCancel, on
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
-    onSave({ firstName, lastName, email, county, orgId, isResearchParticipant, authorizationCapacity, dataAccessUpload, isAdmin, careJourneyAccess, userStoriesAccess, mapAccess })
+    onSave({ firstName, lastName, email, county, orgId, isResearchParticipant, authorizationCapacity, dataAccessUpload, isAdmin, careJourneyAccess, storyTemplateAccess, mapAccess })
   }
 
   function handleDelete() {
@@ -81,12 +81,6 @@ export function OrgUserForm({ mode, org, orgs, initialData, onSave, onCancel, on
 
   return (
     <div className={styles.card}>
-      <div className={styles.titleRow}>
-        <button type="button" className={styles.backBtn} onClick={onCancel} aria-label="Go back">
-          <IconArrowLeft />
-          Back
-        </button>
-      </div>
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.subtitle}>
         {org.name} · {org.counties.join(', ')} {org.counties.length === 1 ? 'County' : 'Counties'}
@@ -192,10 +186,10 @@ export function OrgUserForm({ mode, org, orgs, initialData, onSave, onCancel, on
 
           <div className={styles.toggleRow}>
             <div className={styles.toggleInfo}>
-              <span className={styles.toggleTitle}>User Stories Access</span>
-              <span className={styles.toggleDesc}>Access to User Stories data</span>
+              <span className={styles.toggleTitle}>Story Template Access</span>
+              <span className={styles.toggleDesc}>Access to Story Template data</span>
             </div>
-            <Toggle id="userStories" checked={userStoriesAccess} onChange={setUserStoriesAccess} />
+            <Toggle id="storyTemplate" checked={storyTemplateAccess} onChange={setStoryTemplateAccess} />
           </div>
 
           <div className={styles.toggleRow}>

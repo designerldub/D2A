@@ -1,6 +1,6 @@
 import { TYPE_LABELS, TYPE_COLORS, type StoryCategory, type StoryType } from '../storiesData'
 import type { StoryMethod } from './Step3Story'
-import landingStyles from './UserStoriesPage.module.css'
+import landingStyles from './StoryTemplatePage.module.css'
 import stepStyles from './Step4Review.module.css'
 
 // ── Props ─────────────────────────────────────────────
